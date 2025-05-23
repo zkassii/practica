@@ -1,0 +1,143 @@
+# Решения заданий по работе с массивами в PHP
+
+## 5.1 Создание и вывод массива
+```php
+<?php
+$array = ["Первая строка", "Вторая строка", "Третья строка", "Четвертая строка", "Пятая строка"];
+
+foreach ($array as $index => $value) {
+    echo "Индекс: $index, Значение: $value<br>";
+}
+?>
+```
+
+## 5.2 Сравнение массивов
+```php
+<?php
+$a = array("u"=>"Информатика", "м"=>"Математика");
+$b = array("м"=>"Математика", "и"=>"Информатика");
+
+$sum = $a + $b; // Объединение массивов
+
+echo "Массивы равны: " . (($a == $b) ? 'Да' : 'Нет') . "<br>";
+echo "Массивы эквивалентны: " . (($a === $b) ? 'Да' : 'Нет') . "<br>";
+?>
+```
+
+## 5.3 Добавление элементов и подсчет
+```php
+<?php
+$del_items = array("langs" => array("10"=>"Python", "12"=>"Lisp"), "other"=>"Информатика");
+
+// Добавляем два новых элемента
+$del_items["langs"]["14"] = "Java";
+$del_items["new"] = "Элемент";
+
+echo "Количество элементов без рекурсии: " . count($del_items) . "<br>";
+echo "Общее количество элементов: " . count($del_items, COUNT_RECURSIVE) . "<br>";
+?>
+```
+
+## 5.4 Поиск языка PHP
+```php
+<?php
+$languages = ["JavaScript", "Python", "Ruby", "PHP", "Go"];
+
+if (in_array("PHP", $languages)) {
+    echo "Надо бы изучить PHP";
+}
+?>
+```
+
+## 5.5 Удаление повторяющихся элементов
+```php
+<?php
+$array = [1, 2, 2, 3, 4, 4, 5, 5, 5];
+$unique = array_unique($array);
+
+print_r($unique);
+?>
+```
+
+## 5.6 Вывод массива с print_r
+```php
+<?php
+$array = ["Элемент 1", "Элемент 2", "Элемент 3", "Элемент 4", "Элемент 5"];
+echo "<pre>";
+print_r($array);
+echo "</pre>";
+?>
+```
+
+## 5.7 Ассоциативный массив логинов и паролей
+```php
+<?php
+$users = [
+    "ivanov" => "qwerty123",
+    "petrov" => "asdfgh456",
+    "sidorov" => "zxcvbn789"
+];
+
+echo "<pre>";
+print_r($users);
+echo "</pre>";
+?>
+```
+
+## 5.8 Проверка пользователя
+```php
+<?php
+$users = [
+    "ivanov" => "qwerty123",
+    "petrov" => "asdfgh456",
+    "sidorov" => "zxcvbn789"
+];
+
+$login = "petrov";
+$password = "asdfgh456";
+
+if (isset($users[$login]) && $users[$login] === $password) {
+    echo "Пользователь $login существует и пароль верный";
+} else {
+    echo "Пользователь не найден или пароль неверный";
+}
+?>
+```
+
+## 5.9 Случайный массив с сортировкой
+```php
+<?php
+$count = rand(5, 15);
+$array = [];
+
+for ($i = 0; $i < $count; $i++) {
+    $array[] = rand(1, 100);
+}
+
+sort($array);
+
+echo "Отсортированный массив: ";
+print_r($array);
+echo "Количество элементов: " . count($array) . "<br>";
+echo "Сумма элементов: " . array_sum($array) . "<br>";
+?>
+```
+
+## 5.10 Массив писателей и книг
+```php
+<?php
+function printBooks($books, $type) {
+    foreach ($books as $author => $book) {
+        echo "$type \"$book\" написал $author<br>";
+    }
+}
+
+$books = [
+    "А.С. Пушкин" => "Руслан и Людмила",
+    "Л.Н. Толстой" => "Война и мир",
+    "М.Ю. Лермонтов" => "Герой нашего времени"
+];
+
+printBooks($books, "Роман");
+?>
+```
